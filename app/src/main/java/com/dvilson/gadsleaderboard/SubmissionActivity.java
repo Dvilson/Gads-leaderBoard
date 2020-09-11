@@ -137,10 +137,11 @@ public class SubmissionActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d(TAG, "onResponse: "+response.code());
+
                if(response.isSuccessful()){
                    Log.d(TAG, "onResponse: "+response.code());
                    successfulDialog();
+                   clearEditext();
 
 
                }
@@ -150,6 +151,8 @@ public class SubmissionActivity extends AppCompatActivity {
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.getMessage());
                 onFailureDialog();
+                clearEditext();
+
 
             }
         });
@@ -157,6 +160,9 @@ public class SubmissionActivity extends AppCompatActivity {
 
     private void clearEditext(){
 
-        firstName.clea
+        firstName.setText("");
+        lastName.setText("");
+        emailAddress.setText("");
+        projectLink.setText("");
     }
 }
